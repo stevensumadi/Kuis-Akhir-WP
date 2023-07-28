@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\DB;
 class MainController extends Controller
 {
     public function index(){
-        // $locale = session()->get('locale');
-        // App::setLocale($locale);
         $user = Auth::user();
         $genderPartner = ($user->gender == '1') ? '2' : '1';
         $partner = User::where('datingCode', Auth::user()->datingCode)->where('gender', $genderPartner)->first();
@@ -80,7 +78,6 @@ class MainController extends Controller
             
             return view('tictactoe', compact('roomID'));
         }
-        // return view('tictactoe');
     }
 
     public function admin(){

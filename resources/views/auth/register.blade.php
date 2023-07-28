@@ -83,15 +83,6 @@
                             @enderror
                         </div>
                     </div>
-                    {{-- <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">Phone Number</label>
-                        <input value="{{  old('phoneNumber') }}" name="phoneNumber" type="text" class="form-control @error('phoneNumber') is-invalid @enderror" id="phoneNumber" placeholder="Enter Your Phone Number" required>
-                        @error('phoneNumber')
-                            <div id="phoneNumber" class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div> --}}
                     <div class="mb-3">
                         <label for="image" class="form-label">Upload Your Photo</label>
                         <input class="form-control" type="file" id="image" name="image" required>
@@ -117,11 +108,8 @@
     </div>
 
     <script>
-        
         let navbar = document.getElementById('navbar');
-
         navbar.style.display = 'none';
-
     </script>
 @endsection
 

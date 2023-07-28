@@ -10,7 +10,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
@@ -30,8 +29,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // dd($request);
-        
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:30', 'min:3'],
             'datingCode' => ['required', 'string', 'regex:/\d\d\d/', 'max:3', 'min:3'],

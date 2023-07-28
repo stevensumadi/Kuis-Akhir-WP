@@ -16,15 +16,6 @@ use DragonCode\Contracts\Cashier\Config\Main;
 |
 */
 
-// Route::get('/locale/{loc}', function($loc){
-//     session()->put('locale', $loc);
-//     return redirect()->back();
-// });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::get('/', [MainController::class, 'index'])->middleware(['auth']);
 Route::get('/admin',[MainController::class, 'admin'])->middleware(['auth','isVerify']);
 Route::post('/filter', [MainController::class, 'filter']);

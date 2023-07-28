@@ -24,7 +24,6 @@
         </thead>
         <tbody>
             @foreach ($users as $user)
-                {{-- ban Modal --}}
                 <div class="modal" tabindex="-1" id="banModal">
                     <div class="modal-dialog">
                     <div class="modal-content">
@@ -42,8 +41,6 @@
                     </div>
                     </div>
                 </div>
-
-                {{-- unban Modal --}}
                 <div class="modal" tabindex="-1" id="unbanModal">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -61,45 +58,42 @@
                       </div>
                     </div>
                 </div>
-
-                {{-- @if ($user->is_admin == '0') --}}
-                    <tr>
-                        <th scope="row">{{ $user->id }}</th>
-                        <td>{{ $user->datingCode }}</td>
-                        <td>{{ $user->datingID }}</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->birthDate }}</td>
-                        <td>
-                            @if ($user->gender == '1')
-                                Male
-                            @else
-                                Female
-                            @endif
-                        </td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->phoneNumber }}</td>
-                        <td>
-                            @if ($user->isBanned == '0')
-                                Active
-                            @else
-                                Banned
-                            @endif
-                        </td>
-                        @if($user->isBanned == '0')
-                            <td>
-                                <button type="button" class="btn btn-danger banBtn px-3" data-bs-toggle="modal" data-bs-target="#banModal">
-                                    <i class="fa-solid fa-user-minus"></i><span class="ms-2">Ban User</span>
-                                </button>
-                            </td>
+                <tr>
+                    <th scope="row">{{ $user->id }}</th>
+                    <td>{{ $user->datingCode }}</td>
+                    <td>{{ $user->datingID }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->birthDate }}</td>
+                    <td>
+                        @if ($user->gender == '1')
+                            Male
                         @else
-                            <td>
-                                <button type="button" class="btn btn-success unbanBtn px-3" data-bs-toggle="modal" data-bs-target="#unbanModal">
-                                    <i class="fa-solid fa-user-plus"></i><span class="ms-2">Unban User</span>
-                                </button>
-                            </td>
+                            Female
                         @endif
-                    </tr>
-                {{-- @endif --}}
+                    </td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->phoneNumber }}</td>
+                    <td>
+                        @if ($user->isBanned == '0')
+                            Active
+                        @else
+                            Banned
+                        @endif
+                    </td>
+                    @if($user->isBanned == '0')
+                        <td>
+                            <button type="button" class="btn btn-danger banBtn px-3" data-bs-toggle="modal" data-bs-target="#banModal">
+                                <i class="fa-solid fa-user-minus"></i><span class="ms-2">Ban User</span>
+                            </button>
+                        </td>
+                    @else
+                        <td>
+                            <button type="button" class="btn btn-success unbanBtn px-3" data-bs-toggle="modal" data-bs-target="#unbanModal">
+                                <i class="fa-solid fa-user-plus"></i><span class="ms-2">Unban User</span>
+                            </button>
+                        </td>
+                    @endif
+                </tr>
             @endforeach
         </tbody>
     </table>

@@ -2,14 +2,8 @@
     <div class="container-fluid">
         <a class="navbar-brand fw-bold text-white" href="/">SKY UNIVERSE Lt.</a>
         <ul class="navbar-nav ms-auto">
-            {{-- jika sudah login --}}
             @auth
-              {{-- @dd(session()->get('locale')) --}}
             <li class="nav-item dropdown d-flex">
-                {{-- <div class="form-check form-switch text-white nav-link text-white me-3 px-3">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">id</label>
-                    <input class="form-check-input" id="switch-lang" type="checkbox" role="switch" id="flexSwitchCheckDefault" onclick="switchLang(@if (session()->get('locale') == 'id') 'en' @else 'id' @endif)" {{ (session()->get('locale') == 'id') ? 'checked' : ''}}>
-                </div> --}}
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Welcome, {{ auth()->user()->name }}
                 </a>
@@ -34,7 +28,6 @@
                     </li>
                 </ul>
             </li>
-            {{-- jika belum login --}}
             @else
                 <a class="nav-item d-flex flex-row nav-link" href="{{ route('login') }}">
                     <i class="bi bi-box-arrow-in-right text-white"></i>
