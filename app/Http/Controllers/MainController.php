@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Venue;
 use App\Models\Location;
 use App\Models\User;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Game;
 use Illuminate\Support\Facades\DB;
