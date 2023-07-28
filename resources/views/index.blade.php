@@ -3,7 +3,7 @@
 @section('content')
     <div style="height: 10vh"></div>
     @if (session()->has('success'))
-    <div class="alert alert-success alert-dismissible d-flex justify-content-center col-lg" role="alert">
+    <div class="alert alert-success alert-dismissible d-flex justify-content-center col-lg my-5" role="alert">
         {{ session('success') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>

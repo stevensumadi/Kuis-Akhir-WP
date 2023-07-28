@@ -24,7 +24,7 @@ class MainController extends Controller
             return view('banpage');
         }
 
-        if($partner != NULL){
+        if($partner != NULL && $user->isMet == '1'){
             $image = $partner->image;
             return view('index', [
                 'venues' => Venue::all(),
@@ -45,16 +45,24 @@ class MainController extends Controller
             if($game->player1->gender != Auth::user()->gender){
                 $game->player_2 = Auth::user()->id;
                 $game->save();
-                $roomId = $game->roomId;
-                if((substr($game->player1->user_id, 0, strlen($game->player1->user_id) - 2) == substr($game->player2->user_id, 0, strlen($game->player2->user_id) - 2)) ){
-                    $image = $game->player2->image;
+                $roomID = $game->roomID;
+                if((substr($game->player1->datingID, 0, strlen($game->player1->datingID) - 2) == substr($game->player2->datingID, 0, strlen($game->player2->datingID) - 2)) ){
+                    $user = Auth::user();
+                    $genderPartner = ($user->gender == '1') ? '2' : '1';
+                    $partner = User::where('datingCode', Auth::user()->datingCode)->where('gender', $genderPartner)->first();
+                    $image = $partner->image;
+                    $user->isMet = 1;
+                    $user->save();
+                    $partner->isMet = 1;
+                    $partner->save();
                     $game->delete();
+
                     return view('index', [
                         'venues' => Venue::all(),
                         'image' => $image,
                     ]);
                 }
-                return view('tictactoe', compact('roomId'));
+                return view('tictactoe', compact('roomID'));
             } else {
                 $game = new Game();
                 $game->player_1 = Auth::user()->id;
